@@ -1,0 +1,81 @@
+<div class="portfolio-container">
+  <aside class="sidebar">
+    <img src="https://ui-avatars.com/api/?name=Daniel+Ecos&size=296&background=21262d&color=c9d1d9" alt="Daniel Ecos" class="profile-pic">
+     
+    <h1 class="name">Daniel Armando Ecos</h1>
+    <h2 class="username">danielecos</h2>
+    
+    <p class="bio">Bachiller en Ingeniería de Sistemas | Desarrollador Full Stack</p>
+    
+    <button class="edit-profile-btn">Descargar CV</button>
+
+    <div class="info">
+      <p>📍 Lima - Perú</p>
+      <p>✉️ daniaecos73&#64;gmail.com</p>
+      <p>📱 (+51) 944 511 561</p>
+      <p>🎓 Universidad Nacional San Luis Gonzaga (U.N.ICA)</p>
+    </div>
+
+    <div class="achievements">
+       <h3>Logros y Certificaciones</h3>
+       <div class="badges-achievements">
+          @for (cert of certificaciones; track cert.nombre) {
+            <div class="tooltip-container" 
+                 [attr.data-tooltip]="cert.nombre"
+                 style="--bg-color: #30363d; --text-color: #c9d1d9;">
+              
+              <span class="achievement-badge">
+                {{ cert.icono }}
+              </span>
+              
+            </div>
+          }
+       </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <section class="section">
+      <h2 class="section-title">👋 ¡Hola! (Hi there)</h2>
+      <p>
+        Soy Daniel Armando Ecos Chirinos, un profesional con vocación de servicio, capacidad de análisis y espíritu de colaboración. Me apasiona el desarrollo de software y estoy enfocado en formar parte de una organización donde pueda demostrar mi capacidad de trabajo en equipo y bajo presión. 
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">🚀 Experiencia (Expertise)</h2>
+      <p>
+        Actualmente me desempeño como <strong>Programador y Analista en Game Group S.A.C.</strong>, donde anteriormente ejercí el rol de Analista de Datos. Cuento con una sólida trayectoria en el análisis de sistemas y producción estadística adquirida en el INEI. Mi enfoque combina la capacidad analítica con el desarrollo de soluciones robustas en entornos corporativos e industriales.
+      </p>
+    </section>
+
+<section class="section">
+  <h2 class="section-title">💻 Stack Tecnológico (Tech Stack)</h2>
+  
+  <div class="tech-stack">
+    @for (tech of techStack; track tech.nombre) {
+      <div class="tooltip-container" 
+           [attr.data-tooltip]="'Nivel: ' + tech.nivel"
+           [style.--bg-color]="tech.bg"
+           [style.--text-color]="tech.text">
+        <img [src]="tech.url" [alt]="tech.nombre">
+      </div>
+    }
+  </div>
+</section>
+
+    <section class="section">
+      <h2 class="section-title">🌐 Redes y Contacto (Socials)</h2>
+      <div class="tech-stack">
+        <a href="mailto:daniaecos73@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail"></a>
+        <a href="#"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+        <a href="#"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a>
+      </div>
+      <br>
+      <p style="font-style: italic; color: #8b949e; border-left: 3px solid #30363d; padding-left: 10px;">
+        "La iniciativa y la resiliencia son la clave para resolver cualquier problema algorítmico."
+      </p>
+    </section>
+
+  </main>
+</div>

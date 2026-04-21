@@ -1,0 +1,29 @@
+<div class="projects-container">
+  <h2 class="page-title">Mis Proyectos Destacados</h2>
+  
+  <div class="projects-list">
+    
+    @for (proyecto of listaProyectos; track proyecto.titulo; let i = $index) {
+      <div class="project-card" 
+           [class.expanded]="proyectoExpandido === i" 
+           (click)="toggle(i)">
+        
+        <div class="card-header">
+          <h3 class="project-title">{{ proyecto.titulo }}</h3>
+          <span class="toggle-icon">{{ proyectoExpandido === i ? '▲' : '▼' }}</span>
+        </div>
+
+        <div class="card-body">
+          <p class="project-desc">{{ proyecto.descripcion }}</p>
+          <div class="tech-tags">
+            @for (tech of proyecto.tecnologias; track tech) {
+              <span class="tag">{{ tech }}</span>
+            }
+          </div>
+        </div>
+
+      </div>
+    }
+
+  </div>
+</div>
