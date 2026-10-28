@@ -1,0 +1,10 @@
+<nav class="nav">
+  <a routerLink="/" class="nav-marca">Daniel Ecos</a>
+  <div class="nav-links">
+    <a routerLink="/" routerLinkActive="activo" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+    <a routerLink="/proyectos" routerLinkActive="activo">Proyectos</a>
+    <a routerLink="/experiencia" routerLinkActive="activo">Experiencia</a>
+  </div>
+</nav>
+
+<router-outlet />

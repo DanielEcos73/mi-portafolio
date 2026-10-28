@@ -1,0 +1,62 @@
+<div class="projects-container">
+  <header class="proyectos-header">
+    <div>
+      <h1 class="page-title">Proyectos</h1>
+      <p class="subtitulo">Sistemas en producción, análisis de datos y gestión de proyectos.</p>
+    </div>
+
+    <div class="astronaut-wrapper mini" aria-hidden="true">
+      <div class="astronaut">
+        <div class="head"></div>
+        <div class="arm arm-left"></div>
+        <div class="arm arm-right"></div>
+        <div class="body"><div class="panel"></div></div>
+        <div class="leg leg-left"></div>
+        <div class="leg leg-right"></div>
+        <div class="schoolbag"></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="filtros" role="group" aria-label="Filtrar proyectos">
+    @for (f of filtros; track f.valor) {
+      <button type="button" class="filtro" [class.activo]="filtro() === f.valor"
+              [attr.aria-pressed]="filtro() === f.valor" (click)="cambiarFiltro(f.valor)">
+        {{ f.etiqueta }}
+      </button>
+    }
+  </div>
+
+  <div class="projects-list">
+    @for (proyecto of proyectos(); track proyecto.titulo) {
+      <article class="project-card fade-in" [class.expanded]="expandido() === proyecto.titulo">
+        <button type="button" class="card-header"
+                [attr.aria-expanded]="expandido() === proyecto.titulo"
+                (click)="toggle(proyecto.titulo)">
+          <h2 class="project-title">{{ proyecto.titulo }}</h2>
+          <span class="toggle-icon" aria-hidden="true">▼</span>
+        </button>
+
+        <div class="card-body">
+          <p class="project-desc">{{ proyecto.descripcion }}</p>
+          @if (proyecto.impacto) {
+            <p class="impacto">📈 {{ proyecto.impacto }}</p>
+          }
+          <div class="tech-tags">
+            @for (tech of proyecto.tecnologias; track tech) {
+              <span class="tag">{{ tech }}</span>
+            }
+          </div>
+          @if (proyecto.repo || proyecto.demo) {
+            <div class="enlaces">
+              @if (proyecto.repo) { <a [href]="proyecto.repo" target="_blank" rel="noopener">Código</a> }
+              @if (proyecto.demo) { <a [href]="proyecto.demo" target="_blank" rel="noopener">Demo</a> }
+            </div>
+          }
+        </div>
+      </article>
+    } @empty {
+      <p class="subtitulo">No hay proyectos en esta categoría todavía.</p>
+    }
+  </div>
+</div>

@@ -1,0 +1,334 @@
+/* Contenedor principal estilo GitHub */
+.portfolio-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  gap: 30px;
+ 
+  
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+}
+
+/* Columna Izquierda (Sidebar) */
+.sidebar {
+  width: 296px;
+  flex-shrink: 0;
+}
+
+.profile-pic {
+  width: 296px;
+  height: 296px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #02254d;
+  margin-bottom: 16px;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: 600;
+  color: #d67bd6;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.username {
+  font-size: 20px;
+  font-weight: 300;
+  color: #d67bd6;
+  margin: 0 0 16px 0;
+}
+
+.bio {
+  font-size: 16px;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.edit-profile-btn {
+  width: 100%;
+  padding: 6px 16px;
+  background-color: #032a61;
+  color: #d67bd6;
+  border: 1px solid #d67bd6;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.2s;
+}
+
+.edit-profile-btn:hover {
+  background-color: #06df35;
+}
+
+.info p {
+  font-size: 14px;
+  margin: 8px 0;
+  color: #d67bd6;
+}
+
+.achievements {
+  margin-top: 24px;
+  border-top: 1px solid #b408b4;
+  padding-top: 16px;
+}
+
+.achievements h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.badges-achievements {
+  display: flex;
+  flex-wrap: wrap; /* Esto permite que los iconos bajen a la siguiente línea si no caben */
+  gap: 10px;
+}
+
+.achievement-badge {
+  font-size: 24px;
+  background: #032a61;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #000000;
+  cursor: help;
+}
+
+/* Columna Derecha (Contenido Principal) */
+.main-content {
+  flex-grow: 1;
+  background-color: #0d1117;
+  border: 1px solid #b408b4;
+  border-radius: 6px;
+  padding: 32px;
+}
+
+.section {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #b408b4;
+}
+
+.section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #b408b4;
+  display: flex;
+  align-items: center;
+}
+
+.section p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #d67bd6;
+  margin: 0;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tech-stack img {
+  border-radius: 4px;
+}
+
+/* Responsividad para móviles */
+@media (max-width: 768px) {
+  .portfolio-container {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    text-align: center;
+  }
+  .profile-pic {
+    width: 200px;
+    height: 200px;
+  }
+  .badges-achievements {
+    justify-content: center;
+  }
+}
+
+/* --- Magia para el Tooltip de Tecnologías --- */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  cursor: help; /* Cambia el cursor para indicar que hay información */
+}
+
+/* El globo de texto con colores dinámicos */
+.tooltip-container::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  margin-bottom: 8px;
+  padding: 6px 12px;
+  
+  /* Uso de las variables CSS inyectadas desde el HTML */
+  background-color: var(--bg-color, #21262d);
+  color: var(--text-color, #c9d1d9);
+  border: 1px solid var(--bg-color, #30363d);
+  
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+/* La pequeña flechita apuntando hacia abajo con color dinámico */
+.tooltip-container::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 2px;
+  border-width: 6px;
+  border-style: solid;
+  
+  /* El borde superior usa el color de fondo para crear la flecha */
+  border-color: var(--bg-color, #30363d) transparent transparent transparent;
+  
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 10;
+}
+
+/* Animación al pasar el mouse */
+.tooltip-container:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0); /* Sube suavemente */
+}
+
+.tooltip-container:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* --- Estilos para el Modal de Certificados --- */
+.cert-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(1, 4, 9, 0.85); /* Fondo oscuro estilo GitHub */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+}
+
+.cert-modal-content {
+  position: relative;
+  background-color: #0d1117;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #30363d;
+  max-width: 90vw;
+  max-height: 90vh;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  animation: fadeIn 0.3s ease;
+}
+
+.cert-modal-close {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  background-color: #21262d;
+  color: #c9d1d9;
+  border: 1px solid #30363d;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.cert-modal-close:hover {
+  background-color: #f85149;
+  color: white;
+}
+
+.cert-img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+
+
+/* Botón de CV como enlace */
+.edit-profile-btn {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+/* Reset para badges que ahora son <button> */
+button.achievement-badge {
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+.info a { color: var(--texto-sec); text-decoration: none; }
+.info p { color: var(--texto-sec); }
+
+/* Pilares "Qué hago" */
+.pilares {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+.pilar {
+  background: var(--bg-elevado);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 16px;
+  transition: border-color .2s, transform .2s;
+}
+.pilar:hover { border-color: var(--acento); transform: translateY(-2px); }
+.pilar h3 { margin: 0 0 8px; font-size: 15px; color: var(--texto); }
+.pilar p { font-size: 14px; color: var(--texto-sec); }
+
+.section p + p { margin-top: 12px; }

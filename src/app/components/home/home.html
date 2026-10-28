@@ -1,0 +1,108 @@
+<div class="portfolio-container">
+  <aside class="sidebar">
+    <img src="assets/DANIEL.png" alt="Foto de Daniel Armando Ecos" class="profile-pic" width="296" height="296">
+
+    <h1 class="name">Daniel Armando Ecos</h1>
+    <p class="username">Analista de Datos & Desarrollador Web</p>
+    <p class="bio">SQL Server · Power BI · Modelado de datos · Angular · Node.js</p>
+
+    <a class="edit-profile-btn" href="assets/CV_Daniel_Ecos_Chirinos2.pdf" download="CV_Daniel_Ecos_Chirinos2.pdf">
+      📄 Descargar CV
+    </a>
+
+    <div class="info">
+      <p>📍 Lima, Perú</p>
+      <p>✉️ <a href="mailto:daniaecos73&#64;gmail.com">daniaecos73&#64;gmail.com</a></p>
+      <p>🎓 Bachiller en Ingeniería de Sistemas – U.N. San Luis Gonzaga de Ica</p>
+    </div>
+
+    <div class="achievements">
+      <h3>Certificaciones</h3>
+      <div class="badges-achievements">
+        @for (cert of certificaciones; track cert.nombre) {
+          <button type="button"
+                  class="tooltip-container achievement-badge"
+                  [attr.data-tooltip]="cert.nombre"
+                  [attr.aria-label]="'Ver certificado: ' + cert.nombre"
+                  (click)="abrirModal(cert)">
+            <img [src]="cert.icono" alt="" width="24" height="24" loading="lazy">
+          </button>
+        }
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <section class="section">
+      <h2 class="section-title">Sobre mí</h2>
+      <p>
+        Ingeniero de Sistemas con casi dos años de experiencia transformando datos operativos en
+        información útil para la toma de decisiones. Combino análisis y modelado de datos con
+        desarrollo web full-stack para construir el sistema que captura los datos y también el
+        que los explica.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Qué hago</h2>
+      <div class="pilares">
+        <article class="pilar">
+          <h3>📊 Análisis de datos</h3>
+          <p>Consultas SQL, limpieza de datos, dashboards en Power BI y KPIs para áreas operativas.</p>
+        </article>
+        <article class="pilar">
+          <h3>🗄️ Almacenamiento y modelado</h3>
+          <p>Diseño de modelos relacionales y dimensionales en SQL Server, integridad y rendimiento.</p>
+        </article>
+        <article class="pilar">
+          <h3>💻 Desarrollo web</h3>
+          <p>Aplicaciones Angular + Node.js, APIs REST e integración con hardware (biométricos, IoT).</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Experiencia</h2>
+      <p>
+        <strong>Programador y Analista de Sistemas — Game Group S.A.C.</strong><br>
+        Diseñé desde cero la arquitectura de un sistema biométrico a nivel nacional para más de 1,200 empleados.
+      </p>
+      <p>
+        <strong>INEI</strong><br>
+        Procesamiento de grandes volúmenes de datos estadísticos y modelado de procesos (BPM).
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Stack tecnológico</h2>
+      <div class="tech-stack">
+        @for (tech of techStack; track tech.nombre) {
+          <div class="tooltip-container"
+               [attr.data-tooltip]="'Nivel: ' + tech.nivel"
+               [style.--bg-color]="tech.bg"
+               [style.--text-color]="tech.text">
+            <img [src]="tech.url" [alt]="tech.nombre + ' – ' + tech.nivel" loading="lazy">
+          </div>
+        }
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Contacto</h2>
+      <div class="tech-stack">
+        <a href="mailto:daniaecos73@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail"></a>
+        <a href="https://linkedin.com/in/TU-USUARIO-REAL" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+        <a href="https://github.com/danielecos73" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a>
+      </div>
+    </section>
+  </main>
+</div>
+
+@if (certificadoActivo(); as cert) {
+  <div class="cert-modal-overlay" (click)="cerrarModal()" role="dialog" aria-modal="true" [attr.aria-label]="cert.nombre">
+    <div class="cert-modal-content" (click)="$event.stopPropagation()">
+      <button type="button" class="cert-modal-close" (click)="cerrarModal()" aria-label="Cerrar">×</button>
+      <img [src]="cert.imagen" [alt]="'Certificado: ' + cert.nombre" class="cert-img">
+    </div>
+  </div>
+}

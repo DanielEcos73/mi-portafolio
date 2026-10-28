@@ -1,0 +1,49 @@
+/* app.css */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* izquierda | centro | derecha */
+  align-items: center;
+  padding: 14px 30px;
+  background: rgba(1, 4, 9, 0.9);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--borde);
+}
+
+.nav-marca {
+  justify-self: start; /* el nombre se queda a la izquierda */
+  color: var(--acento);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav-links {
+  grid-column: 2; /* siempre en la columna central */
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  color: var(--texto-sec);
+  text-decoration: none;
+  font-size: 14px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+}
+.nav-links a:hover { color: var(--texto); }
+.nav-links a.activo { color: var(--acento); border-bottom-color: var(--acento); }
+
+/* Celular: nombre arriba y enlaces debajo, ambos centrados */
+@media (max-width: 600px) {
+  .nav {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: 8px;
+    padding: 12px 16px;
+  }
+  .nav-marca { justify-self: center; }
+  .nav-links { grid-column: 1; gap: 18px; }
+}
